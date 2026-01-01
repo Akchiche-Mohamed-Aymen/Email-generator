@@ -66,22 +66,8 @@ st.markdown("""
         opacity: 0.95;
     }
     
-    /* Content Container */
-    .content-wrapper {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 2rem 2rem 2rem;
-    }
     
-    /* Input Section */
-    .input-section {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-        margin-bottom: 2rem;
-        outline: none !important;
-    }
+   
     
     .section-title {
         font-size: 1.4rem;
@@ -303,16 +289,14 @@ st.markdown("""
 if 'generated_email' not in st.session_state:
     st.session_state.generated_email = None
 
-# Main content wrapper
-st.markdown('<div class="content-wrapper">', unsafe_allow_html=True)
+
 
 # Two column layout
 col1, col2 = st.columns([5, 7], gap="large")
 
 with col1:
-    st.markdown('<div class="input-section">', unsafe_allow_html=True)
     st.markdown('<p class="section-title">📝 Configuration</p>', unsafe_allow_html=True)
-    
+    myName = st.text_input("Email Sender Name", placeholder="John Doe", label_visibility="visible")
     # Context input
     context = st.text_area(
         "What's your email about?",
@@ -320,7 +304,8 @@ with col1:
         height=180,
         label_visibility="visible"
     )
-    
+    receiver_title = st.text_input("Email Receiver Title", placeholder="Teacher", label_visibility="visible")
+
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Tabs for attributes
@@ -367,6 +352,8 @@ with col1:
             with st.spinner("✨ Crafting your perfect email..."):
                 data = {
                     "context": context,
+                    "myName": myName,
+                    "receiver_title": receiver_title,
                     "formality": formality,
                     "audience": audience,
                     "language": language,
