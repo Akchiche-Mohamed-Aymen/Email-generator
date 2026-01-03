@@ -304,6 +304,7 @@ with col1:
         height=180,
         label_visibility="visible"
     )
+    receiver_name = st.text_input("Email Receiver Name", placeholder="Jane Smith", label_visibility="visible")
     receiver_title = st.text_input("Email Receiver Title", placeholder="Teacher", label_visibility="visible")
 
     st.markdown("<br>", unsafe_allow_html=True)
@@ -353,6 +354,7 @@ with col1:
                 data = {
                     "context": context,
                     "myName": myName,
+                    "receiver_name": receiver_name,
                     "receiver_title": receiver_title,
                     "formality": formality,
                     "audience": audience,
