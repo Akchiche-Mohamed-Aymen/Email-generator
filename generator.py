@@ -21,7 +21,7 @@ def generate_email(data):
     partial_variables={"format_instructions": parser.get_format_instructions()},
     )
     messages = [
-     SystemMessage(content=f"""
+    SystemMessage(content=f"""
     You are an expert email writing assistant. Your task is to generate professional, well-structured emails based on the user's context and specified attributes.
 
 ## Your Role
