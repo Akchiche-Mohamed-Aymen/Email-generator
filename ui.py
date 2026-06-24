@@ -306,7 +306,16 @@ with col1:
     )
     receiver_name = st.text_input("Email Receiver Name", placeholder="Jane Smith", label_visibility="visible")
     receiver_title = st.text_input("Email Receiver Title", placeholder="Teacher", label_visibility="visible")
+    st.markdown(
+    "Create an API key from "
+    "[Google AI Studio](https://aistudio.google.com/app/apikey)"
+)
 
+    api_key = st.text_input(
+    "Google AI Studio API Key",
+    type="password",
+    help="Paste the API key generated from Google AI Studio."
+)
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Tabs for attributes
@@ -371,7 +380,7 @@ with col1:
                     "cta": cta
                 }
                 
-                st.session_state.generated_email = generate_email(data)
+                st.session_state.generated_email = generate_email(data , api_key)
                 st.success("✅ Email generated successfully!")
     
     st.markdown('</div>', unsafe_allow_html=True)
