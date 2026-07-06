@@ -3,7 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage , SystemMessage
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.prompts import PromptTemplate
-def generate_email(data , key):
+def generate(data , key):
     data_string = "\n".join([f"{key}: {value}" for key, value in data.items()])
     chat =  ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
@@ -163,3 +163,9 @@ Generate the email now based on the provided context and attributes.
     ]
     response = chat.invoke(messages)
     return parser.parse(response.content)
+
+def generate_email(data, api_key):
+    try:
+        return generate(data, api_key)
+    except Exception as e:
+        return None

@@ -379,9 +379,13 @@ with col1:
                     "personalization": personalization,
                     "cta": cta
                 }
-                
-                st.session_state.generated_email = generate_email(data , api_key)
+                email = generate_email(data, api_key)
+                if email is None:
+                    st.error("❌ Failed to generate email. Please check your API key and try again.")
+                    st.stop()
+                st.session_state.generated_email = email
                 st.success("✅ Email generated successfully!")
+                
     
     st.markdown('</div>', unsafe_allow_html=True)
 
