@@ -1,5 +1,6 @@
 import streamlit as st
 api_key = st.secrets.get('GEMINI_API_KEY')
+st.write(f'Loaded : {api_key}')
 # Email attributes configuration
 EMAIL_ATTRIBUTES = {
     "formality": ["informal", "neutral", "formal", "very_formal"],
