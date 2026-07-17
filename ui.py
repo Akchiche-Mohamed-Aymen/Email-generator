@@ -1,5 +1,5 @@
 import streamlit as st
-
+api_key = st.secrets.get('GEMINI_API_KEY')
 # Email attributes configuration
 EMAIL_ATTRIBUTES = {
     "formality": ["informal", "neutral", "formal", "very_formal"],
@@ -306,16 +306,6 @@ with col1:
     )
     receiver_name = st.text_input("Email Receiver Name", placeholder="Jane Smith", label_visibility="visible")
     receiver_title = st.text_input("Email Receiver Title", placeholder="Teacher", label_visibility="visible")
-    st.markdown(
-    "Create an API key from "
-    "[Google AI Studio](https://aistudio.google.com/app/apikey)"
-)
-
-    api_key = st.text_input(
-    "Google AI Studio API Key",
-    type="password",
-    help="Paste the API key generated from Google AI Studio."
-)
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Tabs for attributes
