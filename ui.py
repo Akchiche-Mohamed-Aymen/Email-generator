@@ -370,8 +370,8 @@ with col1:
                     "cta": cta
                 }
                 email = generate_email(data, api_key)
-                if email is None:
-                    st.error("❌ Failed to generate email. Please check your API key and try again.")
+                if not email['body'] :
+                    st.error("❌ Failed to generate email.")
                     st.stop()
                 st.session_state.generated_email = email
                 st.success("✅ Email generated successfully!")
