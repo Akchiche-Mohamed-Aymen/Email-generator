@@ -380,9 +380,7 @@ with col1:
 with col2:
     if st.session_state.generated_email:
         email = st.session_state.generated_email
-        if email['body'] == '':
-                    st.error("❌ Failed to generate email.")
-                    st.stop()
+        st.write(f'Email : {email}')
         
         st.markdown('<div class="email-preview-container">', unsafe_allow_html=True)
         
