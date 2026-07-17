@@ -370,9 +370,7 @@ with col1:
                     "cta": cta
                 }
                 email = generate_email(data, api_key)
-                if not email['body'] :
-                    st.error("❌ Failed to generate email.")
-                    st.stop()
+                
                 st.session_state.generated_email = email
                 st.success("✅ Email generated successfully!")
                 
@@ -382,6 +380,9 @@ with col1:
 with col2:
     if st.session_state.generated_email:
         email = st.session_state.generated_email
+        if email['body'] == '':
+                    st.error("❌ Failed to generate email.")
+                    st.stop()
         
         st.markdown('<div class="email-preview-container">', unsafe_allow_html=True)
         
