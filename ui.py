@@ -373,7 +373,6 @@ with col1:
                 email = generate_email(data, api_key)
                 
                 st.session_state.generated_email = email
-                st.success("✅ Email generated successfully!")
                 
     
     st.markdown('</div>', unsafe_allow_html=True)
